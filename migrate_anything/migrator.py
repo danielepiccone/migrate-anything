@@ -1,5 +1,4 @@
 import base64
-import imp
 import importlib
 import inspect
 import os
@@ -8,6 +7,7 @@ import sys
 from collections import OrderedDict
 from io import open
 
+from migrate_anything import imp
 from migrate_anything.log import logger
 from migrate_anything.storage import Storage
 
@@ -217,6 +217,7 @@ def run_auto_mode(package):
 
     _apply_migrations(
         OrderedDict(
-            [(name, migrations[name]) for name in migrations if name in new_migrations]
+            [(name, migrations[name])
+             for name in migrations if name in new_migrations]
         )
     )
